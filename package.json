@@ -50,7 +50,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "0.17.3",
     "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "2.27.12",
+    "@changesets/cli": "2.28.0",
     "tsup": "8.3.6",
     "typescript": "5.7.3"
   }
