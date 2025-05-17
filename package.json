@@ -51,7 +51,7 @@
     "@arethetypeswrong/cli": "0.18.1",
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "2.29.4",
-    "tsup": "8.4.0",
+    "tsup": "8.5.0",
     "typescript": "5.8.3"
   }
 }
