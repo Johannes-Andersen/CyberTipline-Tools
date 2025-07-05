@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { WebPageIncident } from '../../../types';
 import { buildWebPageIncident } from '../buildWebPageIncident';
 
 describe('buildWebPageIncident', () => {
-  it('should build a web page incident', () => {
+  it('should build a web page incident', ({ assert }) => {
     const webPageIncident: WebPageIncident = {
       additionalInfo: 'This is a test',
       thirdPartyHostedContent: true,
@@ -12,6 +12,6 @@ describe('buildWebPageIncident', () => {
 
     const result = buildWebPageIncident(webPageIncident);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

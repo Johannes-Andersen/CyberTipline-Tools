@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildChatImIncident > should build a chat im incident 1`] = `"<chatImIncident><chatClient>chatClient</chatClient><chatRoomName>chatRoomName</chatRoomName><content>content</content><additionalInfo>additionalInfo</additionalInfo></chatImIncident>"`;

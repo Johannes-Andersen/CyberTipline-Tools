@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { Country, type EstimatedLocation } from '../../../types';
 import { buildEstimatedLocation } from '../buildEstimatedLocation';
 
 describe('buildEstimatedLocation', () => {
-  it('should build a verified estimated location', () => {
+  it('should build a verified estimated location', ({ assert }) => {
     const estimatedLocation: EstimatedLocation = {
       city: 'city',
       region: 'region',
@@ -14,10 +14,10 @@ describe('buildEstimatedLocation', () => {
 
     const result = buildEstimatedLocation(estimatedLocation);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an unverified estimated location', () => {
+  it('should build an unverified estimated location', ({ assert }) => {
     const estimatedLocation: EstimatedLocation = {
       city: 'city',
       region: 'region',
@@ -27,10 +27,12 @@ describe('buildEstimatedLocation', () => {
 
     const result = buildEstimatedLocation(estimatedLocation);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an estimated location with unknown verification status', () => {
+  it('should build an estimated location with unknown verification status', ({
+    assert,
+  }) => {
     const estimatedLocation: EstimatedLocation = {
       city: 'city',
       region: 'region',
@@ -39,6 +41,6 @@ describe('buildEstimatedLocation', () => {
 
     const result = buildEstimatedLocation(estimatedLocation);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

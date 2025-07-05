@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { type Email, EmailType } from '../../../types';
 import { buildEmail } from '../buildEmail';
 
 describe('buildEmail', () => {
-  it('should build a verified email', () => {
+  it('should build a verified email', ({ assert }) => {
     const email: Email = {
       email: 'example@example.com',
       type: EmailType.Work,
@@ -13,10 +13,10 @@ describe('buildEmail', () => {
 
     const result = buildEmail(email);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an unverified email', () => {
+  it('should build an unverified email', ({ assert }) => {
     const email: Email = {
       email: 'example@example.com',
       type: EmailType.Work,
@@ -25,10 +25,10 @@ describe('buildEmail', () => {
 
     const result = buildEmail(email);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an email with unknown verification status', () => {
+  it('should build an email with unknown verification status', ({ assert }) => {
     const email: Email = {
       email: 'example@example.com',
       type: EmailType.Work,
@@ -36,6 +36,6 @@ describe('buildEmail', () => {
 
     const result = buildEmail(email);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

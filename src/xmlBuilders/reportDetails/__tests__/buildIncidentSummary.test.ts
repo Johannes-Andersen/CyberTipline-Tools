@@ -1,10 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { IncidentSummary } from '../../../types';
 import { IncidentType, ReportAnnotation } from '../../../types';
 import { buildIncidentSummary } from '../buildIncidentSummary';
 
 describe('buildIncidentSummary', () => {
-  it('should build an incident summary with all fields', () => {
+  it('should build an incident summary with all fields', ({ assert }) => {
     const incidentSummary: IncidentSummary = {
       incidentType: IncidentType.ChildPornography,
       escalateToHighPriority: 'Immediate risk to child',
@@ -21,10 +21,12 @@ describe('buildIncidentSummary', () => {
 
     const result = buildIncidentSummary(incidentSummary);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an incident summary with only required fields', () => {
+  it('should build an incident summary with only required fields', ({
+    assert,
+  }) => {
     const incidentSummary: IncidentSummary = {
       incidentType: IncidentType.OnlineEnticement,
       incidentDateTime: new Date('2024-01-16T09:15:00Z'),
@@ -32,10 +34,12 @@ describe('buildIncidentSummary', () => {
 
     const result = buildIncidentSummary(incidentSummary);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an incident summary with mixed report annotations', () => {
+  it('should build an incident summary with mixed report annotations', ({
+    assert,
+  }) => {
     const incidentSummary: IncidentSummary = {
       incidentType: IncidentType.ChildSexTrafficking,
       reportAnnotations: {
@@ -47,10 +51,12 @@ describe('buildIncidentSummary', () => {
 
     const result = buildIncidentSummary(incidentSummary);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an incident summary with high priority and no annotations', () => {
+  it('should build an incident summary with high priority and no annotations', ({
+    assert,
+  }) => {
     const incidentSummary: IncidentSummary = {
       incidentType: IncidentType.ChildSexualMolestation,
       escalateToHighPriority: 'Multiple victims identified',
@@ -60,6 +66,6 @@ describe('buildIncidentSummary', () => {
 
     const result = buildIncidentSummary(incidentSummary);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

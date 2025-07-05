@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { type FileDetails, FileDetailType } from '../../../types';
 import { buildFileDetails } from '../buildFileDetails';
 
 describe('buildFileDetails', () => {
-  it('should build file details', () => {
+  it('should build file details', ({ assert }) => {
     const fileDetails: FileDetails = {
       type: FileDetailType.EXIF,
       valuePair: [
@@ -20,6 +20,6 @@ describe('buildFileDetails', () => {
 
     const result = buildFileDetails(fileDetails);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

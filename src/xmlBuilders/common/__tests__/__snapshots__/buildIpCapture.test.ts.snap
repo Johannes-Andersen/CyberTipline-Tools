@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildIpCapture > should build a login ip capture with a proxy 1`] = `"<ipCaptureEvent><ipAddress>127.0.0.1</ipAddress><eventName>Login</eventName><dateTime>2024-01-01T00:00:00.000Z</dateTime><possibleProxy>true</possibleProxy><port>80</port></ipCaptureEvent>"`;
-
-exports[`buildIpCapture > should build a login ip capture with no proxy 1`] = `"<ipCaptureEvent><ipAddress>127.0.0.1</ipAddress><eventName>Login</eventName><dateTime>2024-01-01T00:00:00.000Z</dateTime><possibleProxy>false</possibleProxy><port>80</port></ipCaptureEvent>"`;
-
-exports[`buildIpCapture > should build a login ip capture with unknown proxy status 1`] = `"<ipCaptureEvent><ipAddress>127.0.0.1</ipAddress><eventName>Login</eventName></ipCaptureEvent>"`;

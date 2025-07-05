@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { NewsgroupIncident } from '../../../types';
 import { buildNewsgroupIncident } from '../buildNewsgroupIncident';
 
 describe('buildNewsgroupIncident', () => {
-  it('should build a newsgroup incident', () => {
+  it('should build a newsgroup incident', ({ assert }) => {
     const newsgroupIncident: NewsgroupIncident = {
       name: 'name',
       emailAddress: [
@@ -22,6 +22,6 @@ describe('buildNewsgroupIncident', () => {
 
     const result = buildNewsgroupIncident(newsgroupIncident);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

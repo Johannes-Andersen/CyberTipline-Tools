@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { type Reporter, State } from '../../../types';
 import { buildReporter } from '../buildReporter';
 
 describe('buildReporter', () => {
-  it('should build a reporter with all fields', () => {
+  it('should build a reporter with all fields', ({ assert }) => {
     const reporter: Reporter = {
       reportingPerson: {
         firstName: 'Sarah',
@@ -62,10 +62,10 @@ describe('buildReporter', () => {
 
     const result = buildReporter(reporter);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a reporter with only required fields', () => {
+  it('should build a reporter with only required fields', ({ assert }) => {
     const reporter: Reporter = {
       reportingPerson: {
         firstName: 'John',
@@ -81,10 +81,10 @@ describe('buildReporter', () => {
 
     const result = buildReporter(reporter);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a reporter with multiple contact methods', () => {
+  it('should build a reporter with multiple contact methods', ({ assert }) => {
     const reporter: Reporter = {
       reportingPerson: {
         firstName: 'Emily',
@@ -116,10 +116,12 @@ describe('buildReporter', () => {
 
     const result = buildReporter(reporter);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a reporter with contact person but no company info', () => {
+  it('should build a reporter with contact person but no company info', ({
+    assert,
+  }) => {
     const reporter: Reporter = {
       reportingPerson: {
         firstName: 'David',
@@ -151,6 +153,6 @@ describe('buildReporter', () => {
 
     const result = buildReporter(reporter);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

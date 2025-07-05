@@ -1,0 +1,7 @@
+exports[`buildContactPerson > should build a contact person 1`] = `
+"<contactPerson><firstName>John</firstName><lastName>Doe</lastName><phone countryCallingCode=\\"+99\\">123-456-7890</phone><phone verified=\\"false\\">123-456-7890</phone><email verified=\\"true\\">john.doe@example.com</email><email verified=\\"false\\">john.doe@example.com</email><address><address>123 Main St, Anytown, USA</address><country>US</country></address><address><address>123 Main St, Anytown, USA</address></address></contactPerson>"
+`;
+
+exports[`buildPerson > should build a person 1`] = `
+"<person><firstName>John</firstName><lastName>Doe</lastName><phone countryCallingCode=\\"+99\\">123-456-7890</phone><phone verified=\\"false\\">123-456-7890</phone><email verified=\\"true\\">john.doe@example.com</email><email verified=\\"false\\">john.doe@example.com</email><address><address>123 Main St, Anytown, USA</address><country>US</country></address><address><address>123 Main St, Anytown, USA</address></address><age>30</age><dateOfBirth>1990-01-01</dateOfBirth></person>"
+`;

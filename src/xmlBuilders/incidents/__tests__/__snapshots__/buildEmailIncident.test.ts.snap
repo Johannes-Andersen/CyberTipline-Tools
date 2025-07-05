@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildEmailIncident > should build a email incident 1`] = `"<emailIncident><emailAddress verified="true">test@test.com</emailAddress><emailAddress verified="false">test2@test.com</emailAddress><content>content</content><additionalInfo>additional info</additionalInfo></emailIncident>"`;

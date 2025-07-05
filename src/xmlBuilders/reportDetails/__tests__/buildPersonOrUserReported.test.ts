@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { PersonOrUserReported } from '../../../types';
 import {
   Country,
@@ -10,7 +10,7 @@ import {
 import { buildPersonOrUserReported } from '../buildPersonOrUserReported';
 
 describe('buildPersonOrUserReported', () => {
-  it('should build a person or user reported with all fields', () => {
+  it('should build a person or user reported with all fields', ({ assert }) => {
     const personOrUserReported: PersonOrUserReported = {
       personOrUserReportedPerson: {
         firstName: 'James',
@@ -83,10 +83,12 @@ describe('buildPersonOrUserReported', () => {
 
     const result = buildPersonOrUserReported(personOrUserReported);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a person or user reported with minimal online presence', () => {
+  it('should build a person or user reported with minimal online presence', ({
+    assert,
+  }) => {
     const personOrUserReported: PersonOrUserReported = {
       screenName: 'anonymous_user',
       ipCaptureEvent: [
@@ -100,10 +102,12 @@ describe('buildPersonOrUserReported', () => {
 
     const result = buildPersonOrUserReported(personOrUserReported);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a person or user reported with only physical details', () => {
+  it('should build a person or user reported with only physical details', ({
+    assert,
+  }) => {
     const personOrUserReported: PersonOrUserReported = {
       personOrUserReportedPerson: {
         firstName: 'Robert',
@@ -127,10 +131,12 @@ describe('buildPersonOrUserReported', () => {
 
     const result = buildPersonOrUserReported(personOrUserReported);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a person or user reported with multiple devices and IPs', () => {
+  it('should build a person or user reported with multiple devices and IPs', ({
+    assert,
+  }) => {
     const personOrUserReported: PersonOrUserReported = {
       screenName: 'tech_user',
       deviceId: [
@@ -163,6 +169,6 @@ describe('buildPersonOrUserReported', () => {
 
     const result = buildPersonOrUserReported(personOrUserReported);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

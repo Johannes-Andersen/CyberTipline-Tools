@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildDeviceId > should build a device ID 1`] = `"<deviceId><idType>idType</idType><idValue>idValue</idValue><eventName>Purchase</eventName><dateTime>2024-01-01T00:00:00.000Z</dateTime></deviceId>"`;

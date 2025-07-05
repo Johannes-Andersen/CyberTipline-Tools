@@ -1,0 +1,3 @@
+exports[`buildNewsgroupIncident > should build a newsgroup incident 1`] = `
+"<newsgroupIncident><name>name</name><emailAddress verified=\\"true\\">test@test.com</emailAddress><emailAddress verified=\\"false\\">test2@test.com</emailAddress><content>content</content><additionalInfo>additional info</additionalInfo></newsgroupIncident>"
+`;

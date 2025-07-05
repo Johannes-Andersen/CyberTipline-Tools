@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildOnlineGamingIncident > should build a online gaming incident 1`] = `"<onlineGamingIncident><gameName>My Game</gameName><console>My Console</console><content>This is a test</content><additionalInfo>This is a test</additionalInfo></onlineGamingIncident>"`;

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { ValidationConfig } from '../xmlResponseParser';
 import { parseXmlResponse } from '../xmlResponseParser';
 
@@ -18,7 +18,7 @@ const validConfig: ValidationConfig<TestResponse> = {
 };
 
 describe('parseXmlResponse', () => {
-  it('should parse valid XML with required fields', () => {
+  it('should parse valid XML with required fields', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>
@@ -29,13 +29,13 @@ describe('parseXmlResponse', () => {
 
     const result = parseXmlResponse<TestResponse>(xml, validConfig);
 
-    expect(result).toEqual({
+    assert.deepEqual(result, {
       responseCode: 0,
       message: 'Success',
     });
   });
 
-  it('should parse valid XML with optional fields', () => {
+  it('should parse valid XML with optional fields', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>
@@ -47,14 +47,14 @@ describe('parseXmlResponse', () => {
 
     const result = parseXmlResponse<TestResponse>(xml, validConfig);
 
-    expect(result).toEqual({
+    assert.deepEqual(result, {
       responseCode: 0,
       message: 'Success',
       optionalField: 'Extra info',
     });
   });
 
-  it('should throw error for malformed XML', () => {
+  it('should throw error for malformed XML', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>
@@ -63,10 +63,10 @@ describe('parseXmlResponse', () => {
       </response>
     `;
 
-    expect(() => parseXmlResponse<TestResponse>(xml, validConfig)).toThrow();
+    assert.throws(() => parseXmlResponse<TestResponse>(xml, validConfig));
   });
 
-  it('should throw error for missing root key', () => {
+  it('should throw error for missing root key', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <wrongRoot>
@@ -75,12 +75,12 @@ describe('parseXmlResponse', () => {
       </wrongRoot>
     `;
 
-    expect(() => parseXmlResponse<TestResponse>(xml, validConfig)).toThrow(
-      'XML response missing required "response" property',
-    );
+    assert.throws(() => parseXmlResponse<TestResponse>(xml, validConfig), {
+      message: 'XML response missing required "response" property',
+    });
   });
 
-  it('should throw error for missing required field', () => {
+  it('should throw error for missing required field', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>
@@ -88,12 +88,12 @@ describe('parseXmlResponse', () => {
       </response>
     `;
 
-    expect(() => parseXmlResponse<TestResponse>(xml, validConfig)).toThrow(
-      'Response missing required "message" property',
-    );
+    assert.throws(() => parseXmlResponse<TestResponse>(xml, validConfig), {
+      message: 'Response missing required "message" property',
+    });
   });
 
-  it('should throw error for wrong field type', () => {
+  it('should throw error for wrong field type', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>
@@ -102,29 +102,31 @@ describe('parseXmlResponse', () => {
       </response>
     `;
 
-    expect(() => parseXmlResponse<TestResponse>(xml, validConfig)).toThrow(
-      'Response "responseCode" must be a number',
-    );
+    assert.throws(() => parseXmlResponse<TestResponse>(xml, validConfig), {
+      message: 'Response "responseCode" must be a number, got: string',
+    });
   });
 
-  it('should throw error for non-object root value', () => {
+  it('should throw error for non-object root value', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>Just a string</response>
     `;
 
-    expect(() => parseXmlResponse<TestResponse>(xml, validConfig)).toThrow(
-      'XML "response" must be an object',
-    );
+    assert.throws(() => parseXmlResponse<TestResponse>(xml, validConfig), {
+      message: 'XML "response" must be an object, got: string',
+    });
   });
 
-  it('should handle empty XML response', () => {
+  it('should handle empty XML response', ({ assert }) => {
     const xml = '';
 
-    expect(() => parseXmlResponse<TestResponse>(xml, validConfig)).toThrow();
+    assert.throws(() => parseXmlResponse<TestResponse>(xml, validConfig), {
+      message: 'XML response missing required "response" property',
+    });
   });
 
-  it('should handle XML with whitespace and newlines', () => {
+  it('should handle XML with whitespace and newlines', ({ assert }) => {
     const xml = `
       <?xml version="1.0" encoding="UTF-8"?>
       <response>
@@ -142,13 +144,13 @@ describe('parseXmlResponse', () => {
 
     const result = parseXmlResponse<TestResponse>(xml, validConfig);
 
-    expect(result).toEqual({
+    assert.deepEqual(result, {
       responseCode: 0,
       message: 'Success',
     });
   });
 
-  it('should validate multiple fields with different types', () => {
+  it('should validate multiple fields with different types', ({ assert }) => {
     type ComplexResponse = {
       id: number;
       name: string;
@@ -177,7 +179,7 @@ describe('parseXmlResponse', () => {
 
     const result = parseXmlResponse<ComplexResponse>(xml, complexConfig);
 
-    expect(result).toEqual({
+    assert.deepEqual(result, {
       id: 123,
       name: 'Test Item',
       description: 'A test item',

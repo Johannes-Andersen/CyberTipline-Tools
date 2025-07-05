@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { FileHashType, type OriginalFileHash } from '../../../types';
 import { buildOriginalFileHash } from '../buildOriginalFileHash';
 
 describe('buildOriginalFileHash', () => {
-  it('should build a device ID', () => {
+  it('should build a device ID', ({ assert }) => {
     const originalFileHash: OriginalFileHash = {
       hashType: FileHashType.MD5,
       value: '1234567890',
@@ -11,6 +11,6 @@ describe('buildOriginalFileHash', () => {
 
     const result = buildOriginalFileHash(originalFileHash);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { type Phone, PhoneType } from '../../../types';
 import { buildPhone } from '../buildPhone';
 
 describe('buildPhone', () => {
-  it('should build a verified phone number', () => {
+  it('should build a verified phone number', ({ assert }) => {
     const phone: Phone = {
       number: '123-456-7890',
       countryCallingCode: '+99',
@@ -15,10 +15,10 @@ describe('buildPhone', () => {
 
     const result = buildPhone(phone);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a unverified phone number', () => {
+  it('should build a unverified phone number', ({ assert }) => {
     const phone: Phone = {
       number: '123-456-7890',
       countryCallingCode: '+99',
@@ -27,16 +27,16 @@ describe('buildPhone', () => {
 
     const result = buildPhone(phone);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a phone number with only the number', () => {
+  it('should build a phone number with only the number', ({ assert }) => {
     const phone: Phone = {
       number: '123-456-7890',
     };
 
     const result = buildPhone(phone);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

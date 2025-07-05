@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { Country, type LawEnforcement } from '../../../types';
 import { buildLawEnforcement } from '../buildLawEnforcement';
 
 describe('buildLawEnforcement', () => {
-  it('should build a law enforcement with all fields', () => {
+  it('should build a law enforcement with all fields', ({ assert }) => {
     const lawEnforcement: LawEnforcement = {
       agencyName: 'FBI Cyber Division',
       caseNumber: 'FBI-2024-001',
@@ -20,10 +20,10 @@ describe('buildLawEnforcement', () => {
 
     const result = buildLawEnforcement(lawEnforcement);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a law enforcement with minimal fields', () => {
+  it('should build a law enforcement with minimal fields', ({ assert }) => {
     const lawEnforcement: LawEnforcement = {
       agencyName: 'Local Police Department',
       reportedToLe: false,
@@ -31,10 +31,12 @@ describe('buildLawEnforcement', () => {
 
     const result = buildLawEnforcement(lawEnforcement);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a law enforcement with boolean servedLegalProcessInternational', () => {
+  it('should build a law enforcement with boolean servedLegalProcessInternational', ({
+    assert,
+  }) => {
     const lawEnforcement: LawEnforcement = {
       agencyName: 'Interpol',
       caseNumber: 'INT-2024-002',
@@ -44,10 +46,12 @@ describe('buildLawEnforcement', () => {
 
     const result = buildLawEnforcement(lawEnforcement);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a law enforcement with only officer contact', () => {
+  it('should build a law enforcement with only officer contact', ({
+    assert,
+  }) => {
     const lawEnforcement: LawEnforcement = {
       agencyName: 'Local Police Department',
       officerContact: {
@@ -65,6 +69,6 @@ describe('buildLawEnforcement', () => {
 
     const result = buildLawEnforcement(lawEnforcement);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

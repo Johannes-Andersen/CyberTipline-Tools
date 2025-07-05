@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildEstimatedLocation > should build a verified estimated location 1`] = `"<estimatedLocation verified="true" timestamp="2024-01-01T00:00:00.000Z"><city>city</city><region>region</region><countryCode>US</countryCode></estimatedLocation>"`;
-
-exports[`buildEstimatedLocation > should build an estimated location with unknown verification status 1`] = `"<estimatedLocation><city>city</city><region>region</region><countryCode>RO</countryCode></estimatedLocation>"`;
-
-exports[`buildEstimatedLocation > should build an unverified estimated location 1`] = `"<estimatedLocation verified="false"><city>city</city><region>region</region><countryCode>AL</countryCode></estimatedLocation>"`;

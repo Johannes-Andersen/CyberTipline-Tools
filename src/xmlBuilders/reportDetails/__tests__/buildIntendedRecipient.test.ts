@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { IntendedRecipient } from '../../../types';
 import {
   Country,
@@ -10,7 +10,7 @@ import {
 import { buildIntendedRecipient } from '../buildIntendedRecipient';
 
 describe('buildIntendedRecipient', () => {
-  it('should build an intended recipient with all fields', () => {
+  it('should build an intended recipient with all fields', ({ assert }) => {
     const intendedRecipient: IntendedRecipient = {
       intendedRecipientPerson: {
         firstName: 'Thomas',
@@ -78,10 +78,12 @@ describe('buildIntendedRecipient', () => {
 
     const result = buildIntendedRecipient(intendedRecipient);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an intended recipient with minimal online presence', () => {
+  it('should build an intended recipient with minimal online presence', ({
+    assert,
+  }) => {
     const intendedRecipient: IntendedRecipient = {
       screenName: 'unknown_gamer',
       ipCaptureEvent: [
@@ -95,10 +97,12 @@ describe('buildIntendedRecipient', () => {
 
     const result = buildIntendedRecipient(intendedRecipient);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an intended recipient with person details and account status', () => {
+  it('should build an intended recipient with person details and account status', ({
+    assert,
+  }) => {
     const intendedRecipient: IntendedRecipient = {
       intendedRecipientPerson: {
         firstName: 'Mark',
@@ -115,10 +119,12 @@ describe('buildIntendedRecipient', () => {
 
     const result = buildIntendedRecipient(intendedRecipient);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an intended recipient with multiple devices and group info', () => {
+  it('should build an intended recipient with multiple devices and group info', ({
+    assert,
+  }) => {
     const intendedRecipient: IntendedRecipient = {
       espIdentifier: 'GAMER123',
       espService: 'Multi-Gaming Network',
@@ -147,6 +153,6 @@ describe('buildIntendedRecipient', () => {
 
     const result = buildIntendedRecipient(intendedRecipient);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

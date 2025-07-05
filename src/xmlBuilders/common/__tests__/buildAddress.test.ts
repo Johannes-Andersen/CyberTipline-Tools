@@ -1,11 +1,11 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { type Address, AddressType } from '../../../types';
 import { Country } from '../../../types/Constants/Country';
 import { State } from '../../../types/Constants/State';
 import { buildAddress } from '../buildAddress';
 
 describe('buildAddress', () => {
-  it('should build an American address', () => {
+  it('should build an American address', ({ assert }) => {
     const address: Address = {
       address: '123 Main St',
       city: 'Anytown',
@@ -17,10 +17,10 @@ describe('buildAddress', () => {
 
     const result = buildAddress(address);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build an European address', () => {
+  it('should build an European address', ({ assert }) => {
     const address: Address = {
       address: 'Calle de la Paz, 1',
       city: 'Madrid',
@@ -32,6 +32,6 @@ describe('buildAddress', () => {
 
     const result = buildAddress(address);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

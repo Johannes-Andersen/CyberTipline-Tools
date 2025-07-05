@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { Report } from '../../../types';
 import {
   Country,
@@ -12,7 +12,9 @@ import {
 import { buildReport } from '../buildReport';
 
 describe('buildReport', () => {
-  it('should build a report with all fields and multiple incident types', () => {
+  it('should build a report with all fields and multiple incident types', ({
+    assert,
+  }) => {
     const report: Report = {
       incidentSummary: {
         incidentType: IncidentType.ChildPornography,
@@ -152,10 +154,10 @@ describe('buildReport', () => {
 
     const result = buildReport(report);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a report with only required fields', () => {
+  it('should build a report with only required fields', ({ assert }) => {
     const report: Report = {
       incidentSummary: {
         incidentType: IncidentType.OnlineEnticement,
@@ -177,10 +179,12 @@ describe('buildReport', () => {
 
     const result = buildReport(report);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a report with multiple victims and recipients', () => {
+  it('should build a report with multiple victims and recipients', ({
+    assert,
+  }) => {
     const report: Report = {
       incidentSummary: {
         incidentType: IncidentType.ChildSexTrafficking,
@@ -231,10 +235,12 @@ describe('buildReport', () => {
 
     const result = buildReport(report);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a report with mixed incident types and locations', () => {
+  it('should build a report with mixed incident types and locations', ({
+    assert,
+  }) => {
     const report: Report = {
       incidentSummary: {
         incidentType: IncidentType.ChildPornography,
@@ -300,6 +306,6 @@ describe('buildReport', () => {
 
     const result = buildReport(report);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

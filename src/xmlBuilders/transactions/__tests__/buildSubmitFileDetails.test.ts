@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { SubmitFileDetails } from '../../../types';
 import {
   DeviceEventName,
@@ -13,7 +13,7 @@ import {
 import { buildSubmitFileDetails } from '../buildSubmitFileDetails';
 
 describe('buildSubmitFileDetails', () => {
-  it('should build file details with all fields', () => {
+  it('should build file details with all fields', ({ assert }) => {
     const fileDetails: SubmitFileDetails = {
       reportId: 123456,
       fileId: 'FILE789',
@@ -88,10 +88,10 @@ describe('buildSubmitFileDetails', () => {
 
     const result = buildSubmitFileDetails(fileDetails);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build file details with only required fields', () => {
+  it('should build file details with only required fields', ({ assert }) => {
     const fileDetails: SubmitFileDetails = {
       reportId: 123456,
       fileId: 'FILE789',
@@ -99,10 +99,12 @@ describe('buildSubmitFileDetails', () => {
 
     const result = buildSubmitFileDetails(fileDetails);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build file details with file annotations and relevance', () => {
+  it('should build file details with file annotations and relevance', ({
+    assert,
+  }) => {
     const fileDetails: SubmitFileDetails = {
       reportId: 123456,
       fileId: 'FILE789',
@@ -116,10 +118,10 @@ describe('buildSubmitFileDetails', () => {
 
     const result = buildSubmitFileDetails(fileDetails);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build file details with technical metadata', () => {
+  it('should build file details with technical metadata', ({ assert }) => {
     const fileDetails: SubmitFileDetails = {
       reportId: 123456,
       fileId: 'FILE789',
@@ -155,6 +157,6 @@ describe('buildSubmitFileDetails', () => {
 
     const result = buildSubmitFileDetails(fileDetails);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

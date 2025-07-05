@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildPeer2peerIncident > should build a peer to peer incident 1`] = `"<peer2peerIncident><client>My Client</client><ipCaptureEvent><ipAddress>192.168.1.1</ipAddress></ipCaptureEvent><ipCaptureEvent><ipAddress>192.168.1.2</ipAddress><possibleProxy>true</possibleProxy></ipCaptureEvent><fileNames>My File</fileNames><additionalInfo>This is a test</additionalInfo></peer2peerIncident>"`;

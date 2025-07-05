@@ -115,6 +115,10 @@ try {
 
 🚧 **Todo**
 - [ ] Schema validation (Zod?)
+- [ ] Examples and demos
+- [ ] Documentation improvements
+- [ ] Performance optimizations
+- [ ] Stabilize developer experience
 
 🔮 **Possible Future Plans**
 - [ ] E2E testing against running CyberTipline test environment

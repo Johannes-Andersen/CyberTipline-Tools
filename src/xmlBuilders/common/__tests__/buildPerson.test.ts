@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { type ContactPerson, Country, type Person } from '../../../types';
 import { buildContactPerson, buildPerson } from '../buildPerson';
 
 describe('buildPerson', () => {
-  it('should build a person', () => {
+  it('should build a person', ({ assert }) => {
     const person: Person = {
       firstName: 'John',
       lastName: 'Doe',
@@ -25,12 +25,12 @@ describe('buildPerson', () => {
 
     const result = buildPerson(person);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });
 
 describe('buildContactPerson', () => {
-  it('should build a contact person', () => {
+  it('should build a contact person', ({ assert }) => {
     const person: ContactPerson = {
       firstName: 'John',
       lastName: 'Doe',
@@ -50,6 +50,6 @@ describe('buildContactPerson', () => {
 
     const result = buildContactPerson(person);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

@@ -1,5 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildAddress > should build an American address 1`] = `"<address type="Business"><address>123 Main St</address><city>Anytown</city><zipCode>12345</zipCode><state>UT</state><country>US</country></address>"`;
-
-exports[`buildAddress > should build an European address 1`] = `"<address type="Business"><address>Calle de la Paz, 1</address><city>Madrid</city><zipCode>12345</zipCode><nonUsaState>SomeRegion</nonUsaState><country>ES</country></address>"`;

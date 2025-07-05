@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { Peer2peerIncident } from '../../../types';
 import { buildPeer2peerIncident } from '../buildPeer2peerIncident';
 
 describe('buildPeer2peerIncident', () => {
-  it('should build a peer to peer incident', () => {
+  it('should build a peer to peer incident', ({ assert }) => {
     const peer2peerIncident: Peer2peerIncident = {
       ipCaptureEvent: [
         {
@@ -21,6 +21,6 @@ describe('buildPeer2peerIncident', () => {
 
     const result = buildPeer2peerIncident(peer2peerIncident);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

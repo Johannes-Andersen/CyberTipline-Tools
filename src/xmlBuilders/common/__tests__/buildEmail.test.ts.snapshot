@@ -1,0 +1,11 @@
+exports[`buildEmail > should build a verified email 1`] = `
+"<email type=\\"Work\\" verified=\\"true\\" verificationDate=\\"2024-01-01T00:00:00.000Z\\">example@example.com</email>"
+`;
+
+exports[`buildEmail > should build an email with unknown verification status 1`] = `
+"<email type=\\"Work\\">example@example.com</email>"
+`;
+
+exports[`buildEmail > should build an unverified email 1`] = `
+"<email type=\\"Work\\" verified=\\"false\\">example@example.com</email>"
+`;

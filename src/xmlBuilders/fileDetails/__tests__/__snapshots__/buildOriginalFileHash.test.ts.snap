@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildOriginalFileHash > should build a device ID 1`] = `"<originalFileHash hashType="MD5">1234567890</originalFileHash>"`;

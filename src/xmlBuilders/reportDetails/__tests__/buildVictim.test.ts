@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { Victim } from '../../../types';
 import {
   Country,
@@ -10,7 +10,7 @@ import {
 import { buildVictim } from '../buildVictim';
 
 describe('buildVictim', () => {
-  it('should build a victim with all fields', () => {
+  it('should build a victim with all fields', ({ assert }) => {
     const victim: Victim = {
       victimPerson: {
         firstName: 'Jane',
@@ -73,10 +73,10 @@ describe('buildVictim', () => {
 
     const result = buildVictim(victim);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a victim with only required fields', () => {
+  it('should build a victim with only required fields', ({ assert }) => {
     const victim: Victim = {
       victimPerson: {
         firstName: 'Alex',
@@ -87,10 +87,10 @@ describe('buildVictim', () => {
 
     const result = buildVictim(victim);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a victim with online presence details', () => {
+  it('should build a victim with online presence details', ({ assert }) => {
     const victim: Victim = {
       victimPerson: {
         firstName: 'Chris',
@@ -116,10 +116,10 @@ describe('buildVictim', () => {
 
     const result = buildVictim(victim);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 
-  it('should build a victim with location and device details', () => {
+  it('should build a victim with location and device details', ({ assert }) => {
     const victim: Victim = {
       victimPerson: {
         firstName: 'Emma',
@@ -146,6 +146,6 @@ describe('buildVictim', () => {
 
     const result = buildVictim(victim);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

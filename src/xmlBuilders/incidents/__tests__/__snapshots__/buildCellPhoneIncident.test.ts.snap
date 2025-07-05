@@ -1,5 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildCellPhoneIncident > should build a cell phone incident 1`] = `"<cellPhoneIncident><phoneNumber verified="true">1234567890</phoneNumber><latitude>123</latitude><longitude>456</longitude><additionalInfo>additional info</additionalInfo></cellPhoneIncident>"`;
-
-exports[`buildCellPhoneIncident > should build a cell phone incident with no numbers values 1`] = `"<cellPhoneIncident><latitude>123</latitude><longitude>456</longitude><additionalInfo>additional info</additionalInfo></cellPhoneIncident>"`;

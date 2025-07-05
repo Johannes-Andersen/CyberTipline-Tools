@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import { AddressType, type NonInternetIncident, State } from '../../../types';
 import { buildNonInternetIncident } from '../buildNonInternetIncident';
 
 describe('buildNonInternetIncident', () => {
-  it('should build a non internet incident', () => {
+  it('should build a non internet incident', ({ assert }) => {
     const nonInternetIncident: NonInternetIncident = {
       incidentAddress: [
         {
@@ -24,6 +24,6 @@ describe('buildNonInternetIncident', () => {
 
     const result = buildNonInternetIncident(nonInternetIncident);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

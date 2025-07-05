@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildNonInternetIncident > should build a non internet incident 1`] = `"<nonInternetIncident><locationName>My House</locationName><incidentAddress><address>123 Main St</address><city>Anytown</city><state>FL</state></incidentAddress><incidentAddress type="Billing"><address>456 Elm St</address><city>Othertown</city><state>AL</state></incidentAddress><additionalInfo>This is a test</additionalInfo></nonInternetIncident>"`;

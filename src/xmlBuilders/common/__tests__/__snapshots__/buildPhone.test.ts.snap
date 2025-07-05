@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`buildPhone > should build a phone number with only the number 1`] = `"<phone>123-456-7890</phone>"`;
-
-exports[`buildPhone > should build a unverified phone number 1`] = `"<phone verified="false" countryCallingCode="+99">123-456-7890</phone>"`;
-
-exports[`buildPhone > should build a verified phone number 1`] = `"<phone type="Mobile" verified="true" verificationDate="2024-01-01T00:00:00.000Z" countryCallingCode="+99" extension="123">123-456-7890</phone>"`;

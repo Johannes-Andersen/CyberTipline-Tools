@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import type { EmailIncident } from '../../../types';
 import { buildEmailIncident } from '../buildEmailIncident';
 
 describe('buildEmailIncident', () => {
-  it('should build a email incident', () => {
+  it('should build a email incident', ({ assert }) => {
     const emailIncident: EmailIncident = {
       emailAddress: [
         {
@@ -21,6 +21,6 @@ describe('buildEmailIncident', () => {
 
     const result = buildEmailIncident(emailIncident);
 
-    expect(result).toMatchSnapshot();
+    assert.snapshot(result);
   });
 });

@@ -1,0 +1,15 @@
+exports[`buildLawEnforcement > should build a law enforcement with all fields 1`] = `
+"<lawEnforcement><agencyName>FBI Cyber Division</agencyName><caseNumber>FBI-2024-001</caseNumber><officerContact><firstName>John</firstName><lastName>Smith</lastName></officerContact><reportedToLe>true</reportedToLe><servedLegalProcessDomestic>true</servedLegalProcessDomestic><servedLegalProcessInternational fleaCountry=\\"CA\\">true</servedLegalProcessInternational></lawEnforcement>"
+`;
+
+exports[`buildLawEnforcement > should build a law enforcement with boolean servedLegalProcessInternational 1`] = `
+"<lawEnforcement><agencyName>Interpol</agencyName><caseNumber>INT-2024-002</caseNumber><reportedToLe>true</reportedToLe><servedLegalProcessInternational>true</servedLegalProcessInternational></lawEnforcement>"
+`;
+
+exports[`buildLawEnforcement > should build a law enforcement with minimal fields 1`] = `
+"<lawEnforcement><agencyName>Local Police Department</agencyName><reportedToLe>false</reportedToLe></lawEnforcement>"
+`;
+
+exports[`buildLawEnforcement > should build a law enforcement with only officer contact 1`] = `
+"<lawEnforcement><agencyName>Local Police Department</agencyName><officerContact><firstName>Jane</firstName><lastName>Doe</lastName><email verified=\\"true\\">jane.doe@police.gov</email></officerContact><reportedToLe>true</reportedToLe></lawEnforcement>"
+`;

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'node:test';
 import {
   ensureDesiredReportState,
   ensureSuccessResponse,
@@ -14,25 +14,26 @@ const MockResponseCode = {
 } as const;
 
 describe('resolveResponseCode', () => {
-  it('should resolve success code correctly', () => {
+  it('should resolve success code correctly', ({ assert }) => {
     const result = resolveResponseCode(MockResponseCode.Success);
-    expect(result).toEqual({
+
+    assert.deepEqual(result, {
       message: 'Success',
       httpStatus: 200,
     });
   });
 
-  it('should resolve error codes correctly', () => {
+  it('should resolve error codes correctly', ({ assert }) => {
     const result = resolveResponseCode(MockResponseCode.ServerError);
-    expect(result).toEqual({
+    assert.deepEqual(result, {
       message: 'Server error',
       httpStatus: 500,
     });
   });
 
-  it('should handle unknown response codes', () => {
+  it('should handle unknown response codes', ({ assert }) => {
     const result = resolveResponseCode(99999);
-    expect(result).toEqual({
+    assert.deepEqual(result, {
       message: 'Unknown error',
       httpStatus: 500,
     });
@@ -40,53 +41,77 @@ describe('resolveResponseCode', () => {
 });
 
 describe('ensureSuccessResponse', () => {
-  it('should not throw for success response', () => {
-    expect(() => {
+  it('should not throw for success response', ({ assert }) => {
+    assert.doesNotThrow(() => {
       ensureSuccessResponse(MockResponseCode.Success);
-    }).not.toThrow();
+    });
   });
 
-  it('should throw for non-success response', () => {
-    expect(() => {
-      ensureSuccessResponse(MockResponseCode.ServerError);
-    }).toThrow('Server error');
+  it('should throw for non-success response', ({ assert }) => {
+    assert.throws(
+      () => {
+        ensureSuccessResponse(MockResponseCode.ServerError);
+      },
+      {
+        message: 'Server error',
+        name: 'Error',
+      },
+    );
   });
 
-  it('should throw with correct message for unknown code', () => {
-    expect(() => {
-      ensureSuccessResponse(99999);
-    }).toThrow('Unknown error');
+  it('should throw with correct message for unknown code', ({ assert }) => {
+    assert.throws(
+      () => {
+        ensureSuccessResponse(99999);
+      },
+      {
+        message: 'Unknown error',
+        name: 'Error',
+      },
+    );
   });
 });
 
 describe('ensureDesiredReportState', () => {
-  it('should not throw for success response', () => {
-    expect(() => {
+  it('should not throw for success response', ({ assert }) => {
+    assert.doesNotThrow(() => {
       ensureDesiredReportState(MockResponseCode.Success);
-    }).not.toThrow();
+    });
   });
 
-  it('should not throw for already finished report', () => {
-    expect(() => {
+  it('should not throw for already finished report', ({ assert }) => {
+    assert.doesNotThrow(() => {
       ensureDesiredReportState(MockResponseCode.ReportAlreadyFinished);
-    }).not.toThrow();
+    });
   });
 
-  it('should not throw for already retracted report', () => {
-    expect(() => {
+  it('should not throw for already retracted report', ({ assert }) => {
+    assert.doesNotThrow(() => {
       ensureDesiredReportState(MockResponseCode.ReportAlreadyRetracted);
-    }).not.toThrow();
+    });
   });
 
-  it('should throw for other error responses', () => {
-    expect(() => {
-      ensureDesiredReportState(MockResponseCode.ServerError);
-    }).toThrow('Server error');
+  it('should throw for other error responses', ({ assert }) => {
+    assert.throws(
+      () => {
+        ensureDesiredReportState(MockResponseCode.ServerError);
+      },
+      {
+        message: 'Server error',
+        name: 'Error',
+      },
+    );
   });
 
-  it('should throw with correct message for unknown code', () => {
-    expect(() => {
-      ensureDesiredReportState(99999);
-    }).toThrow('Unknown error');
+  it('should throw with correct message for unknown code', ({ assert }) => {
+    assert.throws(
+      () => {
+        ensureDesiredReportState(99999);
+      },
+      {
+        message: 'Unknown error',
+        name: 'Error',
+      },
+    );
   });
 });

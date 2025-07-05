@@ -1,76 +1,71 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import assert from 'node:assert';
+import { afterEach, describe, it, mock } from 'node:test';
+import {
+  parseGetStatus,
+  parseResponseError,
+} from '../../client/responseParsers';
 import { makeApiRequest } from '../apiRequest';
 
-// Mock the global fetch function
-const mockFetch = vi.fn();
-global.fetch = mockFetch;
-
-// Reset mocks before each test
-beforeEach(() => {
-  mockFetch.mockReset();
-});
-
 describe('makeApiRequest', () => {
+  afterEach(() => {
+    mock.restoreAll();
+  });
+
   const mockUrl = 'https://api.example.com/endpoint';
   const mockAuth = 'base64-encoded-auth';
-  const mockParser = {
-    response: vi.fn(),
-    error: vi.fn(),
+  const errorXmlResponse =
+    '<reportResponse><responseCode>1000</responseCode><responseDescription>Server Error</responseDescription></reportResponse>';
+  const successXmlResponse =
+    '<reportResponse><responseCode>0</responseCode><responseDescription>OK</responseDescription></reportResponse>';
+  const requestId = 'abc-123-xyz';
+  const parsers = {
+    response: parseGetStatus,
+    error: parseResponseError,
   };
 
   it('should make a successful request with correct headers', async () => {
-    const mockResponseData = { success: true };
-    const mockXmlResponse = '<response><success>true</success></response>';
-    const mockRequestId = '123-456';
+    // Mock fetch
+    const mockFetch = mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: true,
+        headers: new Headers({ 'Request-ID': requestId }),
+        text: () => Promise.resolve(successXmlResponse),
+      }),
+    );
 
-    // Setup mock response
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      headers: new Headers({ 'Request-ID': mockRequestId }),
-      text: () => Promise.resolve(mockXmlResponse),
-    });
-
-    mockParser.response.mockReturnValueOnce(mockResponseData);
-
-    const result = await makeApiRequest(mockUrl, mockAuth, mockParser);
+    const result = await makeApiRequest(mockUrl, mockAuth, parsers);
 
     // Verify fetch was called with correct parameters
-    expect(mockFetch).toHaveBeenCalledWith(mockUrl, {
+    assert.strictEqual(mockFetch.mock.calls.length, 1);
+    assert.strictEqual(mockFetch.mock.calls[0]?.arguments[0], mockUrl);
+    assert.deepStrictEqual(mockFetch.mock.calls[0]?.arguments[1], {
       headers: {
         Authorization: `Basic ${mockAuth}`,
       },
     });
 
-    // Verify parser was called with XML response
-    expect(mockParser.response).toHaveBeenCalledWith(mockXmlResponse);
-
     // Verify the returned data
-    expect(result).toEqual({
-      data: mockResponseData,
-      requestId: mockRequestId,
+    assert.deepStrictEqual(result, {
+      data: { responseCode: 0, responseDescription: 'OK' },
+      requestId: requestId,
     });
   });
 
   it('should handle missing Request-ID header', async () => {
-    const mockResponseData = { success: true };
-    const mockXmlResponse = '<response><success>true</success></response>';
+    mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: true,
+        headers: new Headers({}),
+        text: () => Promise.resolve(successXmlResponse),
+      }),
+    );
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      headers: new Headers({}),
-      text: () => Promise.resolve(mockXmlResponse),
-    });
+    const result = await makeApiRequest(mockUrl, mockAuth, parsers);
 
-    mockParser.response.mockReturnValueOnce(mockResponseData);
-
-    const result = await makeApiRequest(mockUrl, mockAuth, mockParser);
-
-    expect(result.requestId).toBe('unknown');
+    assert.strictEqual(result.requestId, 'unknown');
   });
 
   it('should merge custom fetch options with defaults', async () => {
-    const mockResponseData = { success: true };
-    const mockXmlResponse = '<response><success>true</success></response>';
     const customOptions: RequestInit = {
       method: 'POST',
       body: 'test-body',
@@ -79,17 +74,19 @@ describe('makeApiRequest', () => {
       },
     };
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      headers: new Headers({}),
-      text: () => Promise.resolve(mockXmlResponse),
-    });
+    const mockFetch = mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: true,
+        headers: new Headers({}),
+        text: () => Promise.resolve(successXmlResponse),
+      }),
+    );
 
-    mockParser.response.mockReturnValueOnce(mockResponseData);
+    await makeApiRequest(mockUrl, mockAuth, parsers, customOptions);
 
-    await makeApiRequest(mockUrl, mockAuth, mockParser, customOptions);
-
-    expect(mockFetch).toHaveBeenCalledWith(mockUrl, {
+    assert.strictEqual(mockFetch.mock.calls.length, 1);
+    assert.strictEqual(mockFetch.mock.calls[0]?.arguments[0], mockUrl);
+    assert.deepStrictEqual(mockFetch.mock.calls[0]?.arguments[1], {
       method: 'POST',
       body: 'test-body',
       headers: {
@@ -100,75 +97,75 @@ describe('makeApiRequest', () => {
   });
 
   it('should handle error responses with parsed error data', async () => {
-    const mockErrorXml =
-      '<error><code>1000</code><description>Server Error</description></error>';
-    const mockRequestId = 'error-123';
-
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      headers: new Headers({ 'Request-ID': mockRequestId }),
-      text: () => Promise.resolve(mockErrorXml),
-    });
-
-    mockParser.error.mockReturnValueOnce({
-      responseCode: 1000,
-      responseDescription: 'Server Error',
-    });
-
-    await expect(makeApiRequest(mockUrl, mockAuth, mockParser)).rejects.toThrow(
-      `Request failed with http status 500 - ServerError (Request-ID: ${mockRequestId})`,
+    mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: false,
+        status: 500,
+        headers: new Headers({ 'Request-ID': requestId }),
+        text: () => Promise.resolve(errorXmlResponse),
+      }),
     );
 
-    expect(mockParser.error).toHaveBeenCalledWith(mockErrorXml);
+    await assert.rejects(makeApiRequest(mockUrl, mockAuth, parsers), {
+      message: `Request failed with http status 500 - ServerError (Request-ID: ${requestId})`,
+    });
   });
 
   it('should handle error responses with unparseable error data', async () => {
-    const mockRequestId = 'error-456';
-
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      headers: new Headers({ 'Request-ID': mockRequestId }),
-      text: () => Promise.resolve('Invalid XML'),
-    });
-
-    mockParser.error.mockImplementationOnce(() => {
-      throw new Error('Failed to parse error');
-    });
-
-    await expect(makeApiRequest(mockUrl, mockAuth, mockParser)).rejects.toThrow(
-      `Request failed with http status 500 (Request-ID: ${mockRequestId})`,
+    mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: false,
+        status: 500,
+        headers: new Headers({ 'Request-ID': requestId }),
+        text: () => Promise.resolve('Invalid XML'),
+      }),
     );
+
+    await assert.rejects(makeApiRequest(mockUrl, mockAuth, parsers), {
+      message: `Request failed with http status 500 (Request-ID: ${requestId})`,
+    });
   });
 
   it('should handle network errors', async () => {
-    mockFetch.mockRejectedValueOnce(new Error('Network error'));
-
-    await expect(makeApiRequest(mockUrl, mockAuth, mockParser)).rejects.toThrow(
-      'Network error',
+    mock.method(globalThis, 'fetch', () =>
+      Promise.reject(new Error('Network error')),
     );
+
+    await assert.rejects(makeApiRequest(mockUrl, mockAuth, parsers), {
+      message: 'Network error',
+    });
   });
 
   it('should handle error responses with known response codes', async () => {
-    const mockErrorXml =
-      '<error><code>1000</code><description>Server Error</description></error>';
-    const mockRequestId = 'error-789';
-
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      headers: new Headers({ 'Request-ID': mockRequestId }),
-      text: () => Promise.resolve(mockErrorXml),
-    });
-
-    mockParser.error.mockReturnValueOnce({
-      responseCode: 1000,
-      responseDescription: 'Server Error',
-    });
-
-    await expect(makeApiRequest(mockUrl, mockAuth, mockParser)).rejects.toThrow(
-      `Request failed with http status 500 - ServerError (Request-ID: ${mockRequestId})`,
+    mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: false,
+        status: 500,
+        headers: new Headers({ 'Request-ID': requestId }),
+        text: () => Promise.resolve(errorXmlResponse),
+      }),
     );
+
+    await assert.rejects(makeApiRequest(mockUrl, mockAuth, parsers), {
+      message: `Request failed with http status 500 - ServerError (Request-ID: ${requestId})`,
+    });
+  });
+
+  it.only('should handle error responses with unknown response codes', async () => {
+    mock.method(globalThis, 'fetch', () =>
+      Promise.resolve({
+        ok: false,
+        status: 500,
+        headers: new Headers({ 'Request-ID': requestId }),
+        text: () =>
+          Promise.resolve(
+            '<reportResponse><responseCode>6969</responseCode><responseDescription>IDK what this is</responseDescription></reportResponse>',
+          ),
+      }),
+    );
+
+    await assert.rejects(makeApiRequest(mockUrl, mockAuth, parsers), {
+      message: `Request failed with http status 500 (6969: IDK what this is) (Request-ID: ${requestId})`,
+    });
   });
 });
