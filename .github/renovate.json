@@ -1,10 +1,13 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
     "group:monorepos",
     "group:recommended",
     "replacements:all",
-    "workarounds:all"
+    "workarounds:all",
+    "helpers:pinGitHubActionDigests",
+    "customManagers:biomeVersions"
   ],
   "labels": ["type/dependencies"],
   "vulnerabilityAlerts": {
