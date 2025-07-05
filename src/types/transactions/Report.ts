@@ -1,4 +1,4 @@
-import type { ResponseCode } from '../Constants.js';
+import type { ResponseCode } from '../Constants/ResponseCode';
 import type { CellPhoneIncident } from '../incidents/CellPhoneIncident.js';
 import type { ChatImIncident } from '../incidents/ChatImIncident.js';
 import type { EmailIncident } from '../incidents/EmailIncident.js';
@@ -23,16 +23,24 @@ export interface Report {
   /** General incident information. */
   incidentSummary: IncidentSummary;
   /** Details of an incident being reported. */
-  internetDetails?: Array<
-    | WebPageIncident
-    | EmailIncident
-    | NewsgroupIncident
-    | ChatImIncident
-    | OnlineGamingIncident
-    | CellPhoneIncident
-    | NonInternetIncident
-    | Peer2peerIncident
-  >;
+  incidentDetails?: {
+    /** List of cell phone incidents. */
+    cellPhoneIncidents?: Array<CellPhoneIncident>;
+    /** List of chat or instant messaging incidents. */
+    chatImIncidents?: Array<ChatImIncident>;
+    /** List of email incidents. */
+    emailIncidents?: Array<EmailIncident>;
+    /** List of newsgroup incidents. */
+    newsgroupIncidents?: Array<NewsgroupIncident>;
+    /** List of non-internet incidents. */
+    nonInternetIncidents?: Array<NonInternetIncident>;
+    /** List of online gaming incidents. */
+    onlineGamingIncidents?: Array<OnlineGamingIncident>;
+    /** List of peer-to-peer incidents. */
+    peer2peerIncidents?: Array<Peer2peerIncident>;
+    /** List of web page incidents. */
+    webPageIncidents?: Array<WebPageIncident>;
+  };
   /** Law enforcement contact information if the incident information has already been reported to law enforcement or if the request originated from law enforcement. */
   lawEnforcement?: LawEnforcement;
   /** Information related to the person or company reporting the incident. */
@@ -56,5 +64,5 @@ export interface ReportResponse {
   /** A description of the response code. */
   responseDescription: string;
   /** Report ID assigned to the submitted report. */
-  reportId: string;
+  reportId: number;
 }

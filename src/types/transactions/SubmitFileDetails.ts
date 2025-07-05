@@ -1,9 +1,7 @@
-import type {
-  FileAnnotations,
-  FileRelevance,
-  IndustryClassification,
-  ResponseCode,
-} from '../Constants.js';
+import type { ResponseCode } from '../../index.js';
+import type { FileAnnotations } from '../Constants/FileAnnotations.js';
+import type { FileRelevance } from '../Constants/FileRelevance.js';
+import type { IndustryClassification } from '../Constants/IndustryClassification.js';
 import type { DeviceId } from '../common/DeviceId.js';
 import type { IpCapture } from '../common/IpCapture.js';
 import type { FileDetails } from '../fileDetails/FileDetails.js';
@@ -35,7 +33,7 @@ export interface SubmitFileDetails {
   /** The relevance or relation of the file to the report. Unless specified otherwise, a file is "Reported" by default. */
   fileRelevance?: FileRelevance;
   /** Tags to describe the file. */
-  fileAnnotations?: Array<FileAnnotations>;
+  fileAnnotations?: Partial<Record<FileAnnotations, boolean>>;
   /** A categorization from the ESP-designated categorization scale. */
   industryClassification?: IndustryClassification;
   /** The original binary hash value of the file at the time it was uploaded by the reported user or person (prior to any potential modification by the reporter). */
@@ -59,5 +57,5 @@ export interface SubmitFileDetailsResponse {
   /** A description of the response code. */
   responseDescription: string;
   /** The report ID to which this response is related. */
-  reportId: string;
+  reportId: number;
 }

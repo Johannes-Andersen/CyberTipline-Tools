@@ -1,4 +1,4 @@
-import { ResponseCode } from '../types/Constants.js';
+import { ResponseCode } from '../types/Constants/ResponseCode';
 
 /**
  * A mapping between `ResponseCode` value and their corresponding

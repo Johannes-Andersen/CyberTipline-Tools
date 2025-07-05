@@ -1,4 +1,4 @@
-import type { ResponseCode } from '../Constants.js';
+import type { ResponseCode } from '../Constants/ResponseCode.js';
 
 /**
  * POST properties for the Cancel Report endpoint.
@@ -8,7 +8,7 @@ import type { ResponseCode } from '../Constants.js';
  */
 export interface CancelReport {
   /** Report ID of the report to cancel. */
-  id: string;
+  id: number;
 }
 
 /**
@@ -20,5 +20,5 @@ export interface CancelReportResponse {
   /** A description of the response code. */
   responseDescription: string;
   /** Report ID of the cancelled report. */
-  reportId: string;
+  reportId: number;
 }

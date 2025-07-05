@@ -13,10 +13,13 @@ export enum FileDetailType {
  * @see https://report.cybertip.org/ispws/documentation/index.html#details
  */
 export interface FileDetails {
-  /** The name of the metadata entry. */
-  name: string;
-  /** The value of the metadata entry. */
-  value: string;
+  /** The name-value pairs of the metadata entries. */
+  valuePair: Array<{
+    /** The name of the metadata entry. */
+    name: string;
+    /** The value of the metadata entry. */
+    value: string;
+  }>;
   /** The type of the metadata entry. */
   type?: FileDetailType;
 }

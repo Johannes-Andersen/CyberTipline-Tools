@@ -1,3 +1,6 @@
+import type { Country } from '../Constants/Country';
+import type { State } from '../Constants/State';
+
 export enum AddressType {
   Home = 'Home',
   Business = 'Business',
@@ -17,11 +20,11 @@ export interface Address {
   /** Zip or postal code. */
   zipCode?: string;
   /** US state or territory postal abbreviation. */
-  state?: string;
+  state?: State;
   /** State, province, or region if not in the United States. */
   nonUsaState?: string;
   /** ISO 3166-1 alpha-2 two-character country code. */
-  country?: string;
+  country?: Country;
   /** Type of address. */
   type?: AddressType;
 }

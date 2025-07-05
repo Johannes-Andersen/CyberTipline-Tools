@@ -30,9 +30,9 @@ export interface PersonOrUserReported {
   /** Whether the reported person or user is using another company’s service and the reporting company has no further information about this person or user. */
   thirdPartyUserReported?: boolean;
   /** A report ID for a prior CyberTipline report on this reported person or user. */
-  priorCTReports: Array<number>;
+  priorCTReports?: Array<number>;
   /** Unique group identifiers (e.g., group name, group ID) if the reporter believes the reported person or user is engaged in an online group related to child sexual exploitation. */
-  groupIdentifier: string;
+  groupIdentifier?: string;
   /** The reporter’s estimated location for the reported person or user. */
   estimatedLocation?: EstimatedLocation;
   /** Additional information about this reported person or user not covered by any other section. */

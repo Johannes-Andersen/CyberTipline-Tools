@@ -1,4 +1,4 @@
-import type { ResponseCode } from '../Constants.js';
+import type { ResponseCode } from '../Constants/ResponseCode';
 
 /**
  * POST properties for the Upload File endpoint.
@@ -8,7 +8,7 @@ import type { ResponseCode } from '../Constants.js';
  */
 export interface UploadFile {
   /** The report ID to which the uploaded file should be associated. */
-  id: string;
+  id: number;
   /** The actual file being uploaded */
   file: File;
 }
@@ -22,9 +22,9 @@ export interface UploadFileResponse {
   /** A description of the response code. */
   responseDescription: string;
   /** The report ID to which this response is related. */
-  reportId: string;
+  reportId: number;
   /** If a file was successfully uploaded, the file ID for the file. */
-  fileId?: string;
+  fileId: string;
   /** If a file was successfully uploaded, the MD5 hash of the file. */
   hash?: string;
 }

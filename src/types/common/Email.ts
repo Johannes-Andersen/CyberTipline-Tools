@@ -15,5 +15,5 @@ export interface Email {
   /** Whether the reporter has verified the email address. */
   verified?: boolean;
   /** The date and time that the reporter last verified the email address. */
-  verificationDate?: string;
+  verificationDate?: Date;
 }

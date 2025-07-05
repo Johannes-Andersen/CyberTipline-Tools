@@ -19,8 +19,8 @@ export interface Phone {
   verified?: boolean;
   /** The date and time that the reporter last verified the phone number. */
   verificationDate?: Date;
-  /** The country calling code for the phone number. */
-  countryCallingCode?: string;
+  /** The country calling code for the phone number. Starts with a +. */
+  countryCallingCode?: `+${string}`;
   /** The extension for the phone number. */
   extension?: string;
 }
