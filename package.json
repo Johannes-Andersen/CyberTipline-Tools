@@ -41,9 +41,9 @@
   "module": "./dist/index.js",
   "scripts": {
     "build": "tsup",
-    "test": "node --import tsx --test './src/**/*.test.ts'",
-    "test:update": "node --test-update-snapshots --import tsx --test './src/**/*.test.ts'",
-    "test:coverage": "node --experimental-test-coverage --test-coverage-exclude=**/*.test.ts --test-coverage-exclude=src/types/** --import tsx --test './src/**/*.test.ts'",
+    "test": "tsx --test './src/**/*.test.ts'",
+    "test:update": "tsx --test-update-snapshots --test './src/**/*.test.ts'",
+    "test:coverage": "tsx --experimental-test-coverage --test-coverage-exclude=**/*.test.ts --test-coverage-exclude=src/types/** --test './src/**/*.test.ts'",
     "changeset": "changeset",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run lint && pnpm run format && pnpm run check && pnpm run type-check && pnpm run build && pnpm run check-exports",
