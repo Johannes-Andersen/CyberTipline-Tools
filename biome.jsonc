@@ -50,7 +50,8 @@
         "noUselessElse": "error"
       },
       "suspicious": {
-        "useErrorMessage": "error"
+        "useErrorMessage": "error",
+        "noConsole": "error"
       }
     }
   },

@@ -8,7 +8,7 @@ import type { FileDetails } from '../fileDetails/FileDetails.js';
 import type { OriginalFileHash } from '../fileDetails/OriginalFileHash.js';
 
 /**
- * POST properties for the Submit File Details endpoint.
+ * Submit File Details endpoint request.
  *
  * @interface SubmitFileDetails
  * @see https://report.cybertip.org/ispws/documentation/index.html#submit-file-details
@@ -49,7 +49,7 @@ export interface SubmitFileDetails {
 }
 
 /**
- * Response properties for the Submit File Details endpoint.
+ * Submit File Details endpoint response.
  */
 export interface SubmitFileDetailsResponse {
   /** The response code returned from the submittal. 0 is success, any non-zero number is an error code. */

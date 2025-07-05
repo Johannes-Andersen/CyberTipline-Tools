@@ -1,0 +1,3 @@
+exports[`buildFileDetails > should build file details 1`] = `
+"<details type=\\"EXIF\\"><nameValuePair><name>name</name><value>value</value></nameValuePair><nameValuePair><name>name2</name><value>value2</value></nameValuePair></details>"
+`;

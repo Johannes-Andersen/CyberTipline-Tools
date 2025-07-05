@@ -15,7 +15,7 @@ import type { Reporter } from '../reportDetails/Reporter.js';
 import type { Victim } from '../reportDetails/Victim.js';
 
 /**
- * Request properties for the Report endpoint.
+ * Report endpoint request.
  *
  * @see https://report.cybertip.org/ispws/documentation/index.html#report-details-types
  */
@@ -56,7 +56,11 @@ export interface Report {
 }
 
 /**
- * Response properties for the Report endpoint.
+ * Report endpoint response.
+ *
+ * The server’s response will indicate whether the report submission was successful and, if so, provide the report ID assigned to the report.
+ *
+ * The report ID will be used to submit files and file details, as well as to cancel or finish the report.
  */
 export interface ReportResponse {
   /** The response code returned from the submittal. Response code 0 indicates successful report submission, any non-zero number is an error code. */

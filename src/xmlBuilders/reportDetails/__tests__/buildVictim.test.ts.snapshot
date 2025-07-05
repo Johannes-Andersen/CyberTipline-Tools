@@ -1,0 +1,15 @@
+exports[`buildVictim > should build a victim with all fields 1`] = `
+"<victim><victimPerson><firstName>Jane</firstName><lastName>Doe</lastName><phone verified=\\"true\\">555-3333</phone><email verified=\\"true\\">jane.doe@email.com</email><address><address>321 School Lane</address><city>Springfield</city><zipCode>234</zipCode><state>NH</state></address><age>15</age><dateOfBirth>2009-05-20</dateOfBirth></victimPerson><espIdentifier>VICTIM789012</espIdentifier><espService>Teen Social Network</espService><screenName>jane_2009</screenName><displayName>Jane D.</displayName><displayName>JD</displayName><profileUrl>https://teen-social.com/jane_2009</profileUrl><ipCaptureEvent><ipAddress>192.168.2.100</ipAddress><eventName>Login</eventName><dateTime>2024-01-15T13:30:00.000Z</dateTime><possibleProxy>false</possibleProxy></ipCaptureEvent><deviceId><idType>IMEI</idType><idValue>987654321012345</idValue><eventName>Login</eventName><dateTime>2024-01-15T13:30:00.000Z</dateTime></deviceId><schoolName>Springfield High School</schoolName><priorCTReports>654321</priorCTReports><estimatedLocation verified=\\"true\\" timestamp=\\"2024-01-15T14:00:00.000Z\\"><city>Springfield</city><region>Illinois</region><countryCode>US</countryCode></estimatedLocation><additionalInfo>Victim has reported multiple incidents of harassment</additionalInfo></victim>"
+`;
+
+exports[`buildVictim > should build a victim with location and device details 1`] = `
+"<victim><victimPerson><firstName>Emma</firstName><lastName>Wilson</lastName><age>13</age><dateOfBirth>2011-08-15</dateOfBirth></victimPerson><deviceId><idType>ICCID</idType><idValue>98765432101234567890</idValue><eventName>Registration</eventName></deviceId><schoolName>Lincoln Middle School</schoolName><priorCTReports>112233</priorCTReports><estimatedLocation verified=\\"false\\"><city>Chicago</city><region>Illinois</region><countryCode>US</countryCode></estimatedLocation></victim>"
+`;
+
+exports[`buildVictim > should build a victim with online presence details 1`] = `
+"<victim><victimPerson><firstName>Chris</firstName><lastName>Johnson</lastName><age>16</age></victimPerson><screenName>gamer_chris</screenName><displayName>CJ</displayName><displayName>Chris J.</displayName><profileUrl>https://gaming-platform.com/gamer_chris</profileUrl><ipCaptureEvent><ipAddress>192.168.3.100</ipAddress><eventName>Login</eventName></ipCaptureEvent><ipCaptureEvent><ipAddress>192.168.3.200</ipAddress><eventName>Upload</eventName></ipCaptureEvent><schoolName>Central High School</schoolName><additionalInfo>Active on multiple gaming platforms</additionalInfo></victim>"
+`;
+
+exports[`buildVictim > should build a victim with only required fields 1`] = `
+"<victim><victimPerson><firstName>Alex</firstName><lastName>Smith</lastName><age>14</age></victimPerson></victim>"
+`;

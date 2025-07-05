@@ -1,7 +1,10 @@
 import type { ResponseCode } from '../Constants/ResponseCode';
 
 /**
- * POST properties for the Finish Report endpoint.
+ * Finish Report endpoint request.
+ *
+ * Once all the files and file details are uploaded, the report must be finished to complete submission.
+ * A request to finish a report requires the report ID of the report to finish.
  *
  * @interface FinishReport
  * @see https://report.cybertip.org/ispws/documentation/index.html#finish-the-report
@@ -12,7 +15,9 @@ export interface FinishReport {
 }
 
 /**
- * Response properties for the Finish Report endpoint.
+ * Finish Report endpoint response.
+ *
+ * The server’s response will indicate whether the finish was successful, the report ID, and the list of file IDs for the report.
  */
 export interface FinishReportResponse {
   /** The response code returned from the submittal. Response code 0 indicates successful report finish, any non-zero number is an error code. */

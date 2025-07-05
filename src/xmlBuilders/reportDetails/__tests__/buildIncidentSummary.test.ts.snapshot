@@ -1,0 +1,15 @@
+exports[`buildIncidentSummary > should build an incident summary with all fields 1`] = `
+"<incidentSummary><incidentType>Child Pornography (possession, manufacture, and distribution)</incidentType><escalateToHighPriority>Immediate risk to child</escalateToHighPriority><reportAnnotations><sextortion></sextortion><minorToMinorInteraction></minorToMinorInteraction></reportAnnotations><incidentDateTime>2024-01-15T14:30:00.000Z</incidentDateTime><incidentDateTimeDescription>Incident occurred during after-school hours</incidentDateTimeDescription></incidentSummary>"
+`;
+
+exports[`buildIncidentSummary > should build an incident summary with high priority and no annotations 1`] = `
+"<incidentSummary><incidentType>Child Sexual Molestation</incidentType><escalateToHighPriority>Multiple victims identified</escalateToHighPriority><reportAnnotations></reportAnnotations><incidentDateTime>2024-01-18T12:00:00.000Z</incidentDateTime><incidentDateTimeDescription>Ongoing situation over several months</incidentDateTimeDescription></incidentSummary>"
+`;
+
+exports[`buildIncidentSummary > should build an incident summary with mixed report annotations 1`] = `
+"<incidentSummary><incidentType>Child Sex Trafficking</incidentType><reportAnnotations><sextortion></sextortion><csamSolicitation></csamSolicitation></reportAnnotations><incidentDateTime>2024-01-17T18:45:00.000Z</incidentDateTime></incidentSummary>"
+`;
+
+exports[`buildIncidentSummary > should build an incident summary with only required fields 1`] = `
+"<incidentSummary><incidentType>Online Enticement of Children for Sexual Act</incidentType><reportAnnotations></reportAnnotations><incidentDateTime>2024-01-16T09:15:00.000Z</incidentDateTime></incidentSummary>"
+`;
