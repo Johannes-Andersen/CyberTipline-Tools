@@ -56,16 +56,16 @@
     "check:fix": "biome check --write ."
   },
   "dependencies": {
-    "fast-xml-parser": "4.5.0"
+    "fast-xml-parser": "5.2.5"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.2",
     "@biomejs/biome": "2.0.6",
     "@changesets/cli": "2.29.5",
-    "@types/node": "22.10.1",
-    "@vitest/coverage-v8": "2.1.8",
+    "@types/node": "22.16.0",
+    "@vitest/coverage-v8": "3.2.4",
     "tsup": "8.5.0",
     "typescript": "5.8.3",
-    "vitest": "2.1.8"
+    "vitest": "3.2.4"
   }
 }
