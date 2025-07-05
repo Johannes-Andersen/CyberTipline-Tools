@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { FileDetailType, type FileDetails } from '../../../types';
+import { type FileDetails, FileDetailType } from '../../../types';
 import { buildFileDetails } from '../buildFileDetails';
 
 describe('buildFileDetails', () => {

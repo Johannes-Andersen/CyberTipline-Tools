@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { parseXmlResponse } from '../xmlResponseParser';
 import type { ValidationConfig } from '../xmlResponseParser';
+import { parseXmlResponse } from '../xmlResponseParser';
 
 type TestResponse = {
   responseCode: number;

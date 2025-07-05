@@ -10,16 +10,13 @@ const builder = new XMLBuilder({
 export const buildEstimatedLocation = (
   location: EstimatedLocation,
   keyName = 'estimatedLocation',
-): string => {
-  const { timestamp, verified, ...rest } = location;
-
-  return builder.build({
+): string =>
+  builder.build({
     [keyName]: {
-      '@_verified': verified,
-      '@_timestamp': timestamp?.toISOString(),
+      '@_verified': location.verified,
+      '@_timestamp': location.timestamp?.toISOString(),
       city: location.city,
       region: location.region,
       countryCode: location.countryCode,
     },
   });
-};

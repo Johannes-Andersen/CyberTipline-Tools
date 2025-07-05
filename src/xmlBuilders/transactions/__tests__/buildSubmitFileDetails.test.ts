@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { SubmitFileDetails } from '../../../types';
 import {
   DeviceEventName,
   DeviceIdType,
@@ -6,10 +7,9 @@ import {
   FileDetailType,
   FileHashType,
   FileRelevance,
-  IPEventName,
   IndustryClassification,
+  IPEventName,
 } from '../../../types';
-import type { SubmitFileDetails } from '../../../types';
 import { buildSubmitFileDetails } from '../buildSubmitFileDetails';
 
 describe('buildSubmitFileDetails', () => {

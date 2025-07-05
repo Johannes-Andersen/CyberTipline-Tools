@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
+import type { Report } from '../../../types';
 import {
   Country,
   DeviceEventName,
   DeviceIdType,
-  IPEventName,
   IncidentType,
+  IPEventName,
   ReportAnnotation,
   State,
 } from '../../../types';
-import type { Report } from '../../../types';
 import { buildReport } from '../buildReport';
 
 describe('buildReport', () => {

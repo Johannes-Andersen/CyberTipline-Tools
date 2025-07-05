@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { Victim } from '../../../types';
 import {
   Country,
   DeviceEventName,
@@ -6,7 +7,6 @@ import {
   IPEventName,
   State,
 } from '../../../types';
-import type { Victim } from '../../../types';
 import { buildVictim } from '../buildVictim';
 
 describe('buildVictim', () => {

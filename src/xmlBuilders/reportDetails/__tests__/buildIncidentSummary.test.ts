@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { IncidentType, ReportAnnotation } from '../../../types';
 import type { IncidentSummary } from '../../../types';
+import { IncidentType, ReportAnnotation } from '../../../types';
 import { buildIncidentSummary } from '../buildIncidentSummary';
 
 describe('buildIncidentSummary', () => {
