@@ -1,7 +1,7 @@
 import type { ResponseCode } from '../Constants/ResponseCode';
 
 /**
- * POST properties for the Upload File endpoint.
+ * Upload File endpoint response.
  *
  * @interface UploadFile
  * @see https://report.cybertip.org/ispws/documentation/index.html#upload-a-file
@@ -14,7 +14,11 @@ export interface UploadFile {
 }
 
 /**
- * Response properties for the Upload File endpoint.
+ * Upload File endpoint response
+ *
+ * The server’s response will indicate whether the file upload was successful and, if so, the file ID and MD5 hash of the uploaded file.
+ *
+ * The file ID is used to submit file details for the uploaded file. The MD5 hash can be used to verify that the complete file was received.
  */
 export interface UploadFileResponse {
   /** The response code returned from the submittal. 0 is success, any non-zero number is an error code. */
