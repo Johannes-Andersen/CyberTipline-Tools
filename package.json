@@ -11,15 +11,21 @@
     "url": "git+https://github.com/Johannes-Andersen/CyberTipline-Tools.git"
   },
   "author": "Johannes Andersen (https://johand.dev)",
-  "keywords": ["CyberTipline", "NCMEC", "utils"],
+  "keywords": [
+    "CyberTipline",
+    "NCMEC",
+    "utils"
+  ],
   "license": "MIT",
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.12.4",
   "engines": {
-    "node": "22.12.0",
-    "pnpm": "9"
+    "node": "22.17.0",
+    "pnpm": "10"
   },
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     "import": {
       "types": "./dist/index.d.ts",
@@ -53,13 +59,13 @@
     "fast-xml-parser": "4.5.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.17.0",
-    "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "2.27.10",
+    "@arethetypeswrong/cli": "0.18.2",
+    "@biomejs/biome": "2.0.6",
+    "@changesets/cli": "2.29.5",
     "@types/node": "22.10.1",
     "@vitest/coverage-v8": "2.1.8",
-    "tsup": "8.3.5",
-    "typescript": "5.7.2",
+    "tsup": "8.5.0",
+    "typescript": "5.8.3",
     "vitest": "2.1.8"
   }
 }

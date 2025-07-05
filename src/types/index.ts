@@ -1,3 +1,16 @@
+// Client
+export * from './Client.js';
+
+// Constants
+export * from './Constants/Country.js';
+export * from './Constants/FileAnnotations.js';
+export * from './Constants/FileRelevance.js';
+export * from './Constants/IncidentType.js';
+export * from './Constants/IndustryClassification.js';
+export * from './Constants/ReportAnnotation.js';
+export * from './Constants/ResponseCode.js';
+export * from './Constants/State.js';
+
 // Common types
 export * from './common/Address.js';
 export * from './common/DeviceId.js';
@@ -36,16 +49,3 @@ export * from './transactions/GetStatus.js';
 export * from './transactions/Report.js';
 export * from './transactions/SubmitFileDetails.js';
 export * from './transactions/UploadFile.js';
-
-// Constants
-export * from './Constants/Country.js';
-export * from './Constants/FileAnnotations.js';
-export * from './Constants/FileRelevance.js';
-export * from './Constants/IncidentType.js';
-export * from './Constants/IndustryClassification.js';
-export * from './Constants/ReportAnnotation.js';
-export * from './Constants/ResponseCode.js';
-export * from './Constants/State.js';
-
-// Client
-export * from './Client.js';
