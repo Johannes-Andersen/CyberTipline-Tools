@@ -1,5 +1,5 @@
-import type { WithRequired } from '../TypeUtils.js';
 import type { ContactPerson, Person } from '../common/Person.js';
+import type { WithRequired } from '../TypeUtils.js';
 
 /**
  * Information related to the person or company reporting the incident.
