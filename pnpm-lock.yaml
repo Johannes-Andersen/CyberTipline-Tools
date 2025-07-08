@@ -22,8 +22,8 @@ importers:
         specifier: 2.29.5
         version: 2.29.5
       '@types/node':
-        specifier: 22.16.0
-        version: 22.16.0
+        specifier: 22.16.1
+        version: 22.16.1
       tsup:
         specifier: 8.5.0
         version: 8.5.0(postcss@8.5.6)(tsx@4.20.3)(typescript@5.8.3)
@@ -469,8 +469,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.16.0':
-    resolution: {integrity: sha512-B2egV9wALML1JCpv3VQoQ+yesQKAmNMBIAY7OteVrikcOcAkWm+dGL6qpeCktPjAv6N1JLnhbNiqS35UpFyBsQ==}
+  '@types/node@22.16.1':
+    resolution: {integrity: sha512-oaNE4MzsA6uO7HcsjUvqzz19lYIRsV6I1Dc6iOvgwYYDiOeF7/9b2E/PE0UW2ccwpgWPVUedjltYXQXVKFd4EA==}
 
   acorn@8.15.0:
     resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
@@ -1629,7 +1629,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.16.0':
+  '@types/node@22.16.1':
     dependencies:
       undici-types: 6.21.0
 
