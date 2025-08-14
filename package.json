@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.2",
-    "@biomejs/biome": "2.1.4",
+    "@biomejs/biome": "2.2.0",
     "@changesets/cli": "2.29.5",
     "@types/node": "22.17.1",
     "tsup": "8.5.0",
