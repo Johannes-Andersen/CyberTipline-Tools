@@ -44,9 +44,6 @@
     "test": "tsx --test './src/**/*.test.ts'",
     "test:update": "tsx --test-update-snapshots --test './src/**/*.test.ts'",
     "test:coverage": "tsx --experimental-test-coverage --test-coverage-exclude=**/*.test.ts --test-coverage-exclude=src/types/** --test './src/**/*.test.ts'",
-    "changeset": "changeset",
-    "local-release": "changeset version && changeset publish",
-    "prepublishOnly": "pnpm run lint && pnpm run format && pnpm run check && pnpm run type-check && pnpm run build && pnpm run check-exports",
     "check-exports": "attw --pack .",
     "type-check": "tsc --noEmit",
     "lint": "biome lint .",
@@ -62,7 +59,6 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.2",
     "@biomejs/biome": "2.2.6",
-    "@changesets/cli": "2.29.7",
     "@types/node": "22.18.11",
     "tsup": "8.5.0",
     "tsx": "4.20.6",
