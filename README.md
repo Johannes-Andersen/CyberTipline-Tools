@@ -71,7 +71,7 @@ await client.finishReport({
 
 ## Requirements
 
-- Node.js 22.x or later (TypeScript 5.x for type definitions)
+- Node.js 24.x or later (TypeScript 5.x for type definitions)
   - Older versions may work, but are not officially verified.
 - ESM module support
   - CommonJS is exported, but not officially tested. We welcome contributions to improve this.
