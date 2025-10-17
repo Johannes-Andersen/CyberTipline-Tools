@@ -1,6 +1,6 @@
 {
   "name": "cybertipline-tools",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Unofficial Types and Utilities for working with the CyberTipline API",
   "homepage": "https://github.com/Johannes-Andersen/CyberTipline-Tools",
   "bugs": {
