@@ -54,7 +54,7 @@
     "check:fix": "biome check --write ."
   },
   "dependencies": {
-    "fast-xml-parser": "5.5.11"
+    "fast-xml-parser": "5.5.12"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.2",
