@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -9,6 +11,7 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
+    "types": ["node"],
 
     /* Strictness */
     "strict": true,
