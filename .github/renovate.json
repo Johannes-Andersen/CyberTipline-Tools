@@ -7,7 +7,8 @@
     "replacements:all",
     "workarounds:all",
     "helpers:pinGitHubActionDigests",
-    "customManagers:biomeVersions"
+    "customManagers:biomeVersions",
+    "security:minimumReleaseAgeNpm"
   ],
   "labels": ["type/dependencies"],
   "vulnerabilityAlerts": {
