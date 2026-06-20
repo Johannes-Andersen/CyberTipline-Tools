@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       fast-xml-parser:
-        specifier: 5.9.1
-        version: 5.9.1
+        specifier: 5.9.2
+        version: 5.9.2
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: 0.18.3
@@ -714,8 +714,8 @@ packages:
   fast-xml-builder@1.2.0:
     resolution: {integrity: sha512-00aAWieqff+ZJhsXA4g1g7M8k+7AYoMUUHF+/zFb5U6Uv/P0Vl4QZo84/IcufzYalLuEj9928bXN9PbbFzMF0Q==}
 
-  fast-xml-parser@5.9.1:
-    resolution: {integrity: sha512-S7c757RD3jvnkiKleILFONy5+kBzc2gLxbDBJmN8DvriXTVqBGOzcMZqUPkX/o259U7SbK9fy6td1EELt2zHSQ==}
+  fast-xml-parser@5.9.2:
+    resolution: {integrity: sha512-DYPkXnVSJHAGAkSBeVYhEo/seIpz2SLr9OQcX7m6lXaX3gvoB+DCKzFdZIEhZGI3I1DUhObBAUOT/v2xfoXz/w==}
     hasBin: true
 
   fdir@6.5.0:
@@ -1471,7 +1471,7 @@ snapshots:
       path-expression-matcher: 1.5.0
       xml-naming: 0.1.0
 
-  fast-xml-parser@5.9.1:
+  fast-xml-parser@5.9.2:
     dependencies:
       '@nodable/entities': 2.2.0
       fast-xml-builder: 1.2.0
