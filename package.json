@@ -19,7 +19,7 @@
   "license": "MIT",
   "packageManager": "pnpm@11.25.0",
   "engines": {
-    "node": "24.20.0",
+    "node": "24.21.0",
     "pnpm": "11"
   },
   "type": "module",
