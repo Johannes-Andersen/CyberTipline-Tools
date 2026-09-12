@@ -59,7 +59,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
     "@biomejs/biome": "2.5.12",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "tsup": "8.5.1",
     "tsx": "4.23.13",
     "typescript": "6.0.3"
