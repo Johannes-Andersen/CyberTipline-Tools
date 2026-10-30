@@ -17,10 +17,10 @@
     "utils"
   ],
   "license": "MIT",
-  "packageManager": "pnpm@11.28.9",
+  "packageManager": "pnpm@12.16.1",
   "engines": {
     "node": "24.22.2",
-    "pnpm": "11"
+    "pnpm": "12"
   },
   "type": "module",
   "files": [
